@@ -69,9 +69,7 @@ public abstract class Curso {
 		return false;
 	}
 
-	public boolean EsApto(Alumno a) {
-		return this.alumnosAptos.contains(a);
-	}
+	public abstract boolean EsApto(Alumno a);
 	
 	public boolean Matriculacion(Alumno a) {
 		if(a.getCredito() > this.precioMatricula) {
@@ -83,6 +81,18 @@ public abstract class Curso {
 		return false;
 	}
 	
-	protected abstract boolean calificar();	
-	
+	protected  boolean calificar(){
+		if(this.Haterminado()){
+			for (Alumno a : this.getAlumnosMatriculados()) {
+				if (this.EsApto(a)) this.alumnosAptos.add(a);
+			}
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
 }

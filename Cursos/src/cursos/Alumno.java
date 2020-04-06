@@ -10,7 +10,7 @@ public class Alumno {
 	private int credito;
 	private Set<Curso> cursosMatriculados;
 	
-	// Contructores
+	// Constructores
 	public Alumno(String nombre, String dni) {
 		this.nombre = nombre;
 		this.dni = dni;
@@ -54,7 +54,11 @@ public class Alumno {
 	
 	public void AddCurso(Curso c) {
 		this.cursosMatriculados.add(c);
-	}	
-	
-	
+	}
+
+	@Override
+	public String toString() {
+		return "Alumno: "+ this.nombre + "\ndni:" + this.dni + "\ncredito: " + this.credito +
+				"\nNumero cursos matriculado" + this.cursosMatriculados.size();
+	}
 }
