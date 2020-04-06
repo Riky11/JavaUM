@@ -16,7 +16,7 @@ public class CursoPresencial extends Curso {
         this.cupo = cupo;
         this.asistenciaMin = asistenciaMin;
         this.asistencias = new HashMap<Integer, HashSet<Alumno>>();
-        int plazas = cupo;
+        plazas = this.cupo;
     }
 
     //Funcionalidades
