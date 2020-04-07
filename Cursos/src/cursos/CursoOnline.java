@@ -1,5 +1,6 @@
 package cursos;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,9 +14,7 @@ public class CursoOnline extends Curso {
         super(titulo, inicio, finalizacion, numDias, precioMatricula);
         this.nivelMax = nivelMax;
         this.cursoPrevios = new HashSet<Curso>();
-        for (Curso c: cursoPrevios) {
-            this.cursoPrevios.add(c);
-        }
+        this.cursoPrevios.addAll(Arrays.asList(cursoPrevios));
         this.seguimientoAlumnos = new HashMap<Alumno, Integer>();
     }
 
@@ -26,7 +25,6 @@ public class CursoOnline extends Curso {
 
     public boolean superarNivel(Alumno a){
         if(this.getAlumnosMatriculados().contains(a) && this.nivelAlumno(a) < this.nivelMax){
-            //Comprobar esto--------------------------------------------------------
             this.seguimientoAlumnos.put(a, this.seguimientoAlumnos.get(a) + 1);
             return true;
         }
@@ -48,7 +46,7 @@ public class CursoOnline extends Curso {
 
     @Override
     public boolean EsApto(Alumno a) {
-        return (this.seguimientoAlumnos.get(a) >= this.nivelMax/2) ? true : false;
+        return this.seguimientoAlumnos.get(a) >= this.nivelMax/2;
 
     }
 
