@@ -16,14 +16,14 @@ public class CursoPresencial extends Curso {
         this.cupo = cupo;
         this.asistenciaMin = asistenciaMin;
         this.asistencias = new HashMap<Integer, HashSet<Alumno>>();
-        int plazas = cupo;
+        plazas = this.cupo;
     }
 
     //Funcionalidades
     public boolean registroAsistencia(int dia, Alumno a) {
         if (dia >= 1 && dia <= this.getNumDias() && this.getAlumnosMatriculados().contains(a)){
             if(!this.asistencias.containsKey(dia)){
-                this.asistencias.put(dia, this.asistencias.get(dia));
+                this.asistencias.put(dia, new HashSet<Alumno>());
 
             }
             this.asistencias.get(dia).add(a);

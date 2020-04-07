@@ -2,18 +2,17 @@ package cursos;
 
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Set;
 
 
 
-public abstract class Curso {
+public abstract class Curso implements Cloneable{
 	private String titulo;
 	private Date inicico;
 	private Date finalizacion;
 	private int numDias;
 	private int precioMatricula;
-	private Set<Alumno> alumnosMatriculados;
-	private Set<Alumno> alumnosAptos;
+	private HashSet<Alumno> alumnosMatriculados;
+	private HashSet<Alumno> alumnosAptos;
 	private int numMatricludaos;
 	
 	public Curso(String titulo, Date inicio, Date finalizacion, int numDias, int preciMatricula) {
@@ -48,11 +47,11 @@ public abstract class Curso {
 		return precioMatricula;
 	}
 
-	public Set<Alumno> getAlumnosMatriculados() {
+	public HashSet<Alumno> getAlumnosMatriculados() {
 		return alumnosMatriculados;
 	}
 
-	public Set<Alumno> getAlumnosAptos() {
+	public HashSet<Alumno> getAlumnosAptos() {
 		return alumnosAptos;
 	}
 

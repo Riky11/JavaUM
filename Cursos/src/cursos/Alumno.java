@@ -58,7 +58,7 @@ public class Alumno {
 
 	@Override
 	public String toString() {
-		return "Alumno: "+ this.nombre + "\ndni:" + this.dni + "\ncredito: " + this.credito +
-				"\nNumero cursos matriculado" + this.cursosMatriculados.size();
+		return "Alumno: "+ this.nombre + ", dni:" + this.dni + ", credito: " + this.credito +
+				", Numero cursos matriculado: " + this.cursosMatriculados.size();
 	}
 }

@@ -39,7 +39,11 @@ public class CursoOnline extends Curso {
             if(!c.EsApto(a))
                 return false;
         }
-        return super.Matriculacion(a);
+        if(super.Matriculacion(a)){
+            this.seguimientoAlumnos.put(a, 0);
+            return true;
+        }
+        return false;
     }
 
     @Override
