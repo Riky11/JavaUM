@@ -22,9 +22,7 @@ public class Programa {
         //50€, la duración es de un día de clase, un cupo de 20 y el número mínimo de
         //asistencias 1.
         LocalDate fecha = LocalDate.of(2014, 5,05);
-        CursoPresencial designBD = new CursoPresencial("Diseño de Base de datos",
-                fecha,fecha, 1, 50 ,
-                20 , 1 );
+        CursoPresencial designBD = new CursoPresencial("Diseño de Base de datos", fecha,fecha, 1, 50 , 20 , 1 );
 
         //Declara una variable que referencie a un curso online de título “Administración
         //de Bases de Datos” con fecha de inicio 12/05/2014 y fin 16/05/2014. El precio
@@ -34,8 +32,7 @@ public class Programa {
         LocalDate inicio = LocalDate.of(2014,Month.MAY,12);
         LocalDate fin =  LocalDate.of(2014,5,16);
 
-        CursoOnline admBD = new CursoOnline("Administracion de Base de datos", inicio, fin,
-                5, 25, 4, designBD);
+        CursoOnline admBD = new CursoOnline("Administracion de Base de datos", inicio, fin, 5, 25, 4, designBD);
 
         //Matricula a los dos alumnos en el curso presencial.
         designBD.Matriculacion(pepe);
@@ -52,7 +49,6 @@ public class Programa {
         for (Alumno a :designBD.getAlumnosAptos()) {
             System.out.println("    - " + a.toString());
         }
-
 
         //Matricula a los dos alumnos en el curso online.
         admBD.Matriculacion(pepe);
