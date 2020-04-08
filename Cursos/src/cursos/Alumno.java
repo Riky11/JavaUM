@@ -3,7 +3,7 @@ package cursos;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Alumno {
+public class Alumno{
 	// Atributos
 	private final String nombre;
 	private final String dni;
@@ -61,4 +61,5 @@ public class Alumno {
 		return "Alumno: "+ this.nombre + ", dni:" + this.dni + ", credito: " + this.credito +
 				", Numero cursos matriculado: " + this.cursosMatriculados.size();
 	}
+
 }

@@ -1,7 +1,10 @@
 package cursos;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 public class Programa {
@@ -18,9 +21,7 @@ public class Programa {
         //Bases de Datos” con fecha de inicio y fin 5/05/2014. El precio del curso es de
         //50€, la duración es de un día de clase, un cupo de 20 y el número mínimo de
         //asistencias 1.
-        Calendar calendario = Calendar.getInstance();
-        calendario.set(2014,Calendar.MAY,05);
-        Date fecha = calendario.getTime();
+        LocalDate fecha = LocalDate.of(2014, 5,05);
         CursoPresencial designBD = new CursoPresencial("Diseño de Base de datos",
                 fecha,fecha, 1, 50 ,
                 20 , 1 );
@@ -30,10 +31,9 @@ public class Programa {
         //del curso es de 25€, la duración es de 5 días, tiene un nivel 4 y como requisito
         //que se haya realizado previamente el curso presencial de “Diseño de Bases de
         //Datos”.
-        calendario.set(2014,Calendar.MAY,12);
-        Date inicio = calendario.getTime();
-        calendario.set(2014,Calendar.MAY,16);
-        Date fin =  calendario.getTime();
+        LocalDate inicio = LocalDate.of(2014,Month.MAY,12);
+        LocalDate fin =  LocalDate.of(2014,5,16);
+
         CursoOnline admBD = new CursoOnline("Administracion de Base de datos", inicio, fin,
                 5, 25, 4, designBD);
 
@@ -48,8 +48,10 @@ public class Programa {
         //alumnos aptos. Sólo debe aparecer “Pepe”.
         designBD.calificar();
         System.out.println("**Alumnos aptos curso presencial:");
-        System.out.println(designBD.getAlumnosAptos().toString());
-
+        //Forma rapida pero pobre -> System.out.println(designBD.getAlumnosAptos().toString());
+        for (Alumno a :designBD.getAlumnosAptos()) {
+            System.out.println("    - " + a.toString());
+        }
 
 
         //Matricula a los dos alumnos en el curso online.
@@ -59,7 +61,9 @@ public class Programa {
         //Muestra la lista de los alumnos matriculados en el curso online. Sólo debe
         //aparecer “Pepe”.
         System.out.println("\n**Alumnos matriculados curso online:");
-        System.out.println(admBD.getAlumnosMatriculados().toString());
+        for (Alumno a :admBD.getAlumnosMatriculados()) {
+            System.out.println("    - " + a.toString());
+        }
 
         //Registra en el curso online que “Pepe” ha superado el nivel.
         admBD.superarNivel(pepe);
@@ -73,8 +77,14 @@ public class Programa {
 
         //Muestra los alumnos matriculados en el curso presencial ordenados utilizando
         //el criterio de ordenación implementado.
-        System.out.println("\n**Alumnos matriculados curso presencial ordenados:");
-        System.out.println(designBD.getAlumnosMatriculados().toString());
+        List<Alumno> lista =  new ArrayList<Alumno>();
+        lista.addAll(designBD.getAlumnosMatriculados());
+        Collections.sort(lista, new CriterioOrdenacionAlumnosPorDni());
+
+        System.out.println("\n**Alumnos matriculados curso presencial ordenados por dni:");
+        for (Alumno a : lista) {
+            System.out.println("    - " + a.toString());
+        }
 
 
     }

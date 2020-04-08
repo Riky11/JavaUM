@@ -1,21 +1,21 @@
 package cursos;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Set;
 
 
-
-public abstract class Curso implements Cloneable{
+public abstract class Curso  {
 	private String titulo;
-	private Date inicico;
-	private Date finalizacion;
+	private LocalDate inicico;
+	private LocalDate finalizacion;
 	private int numDias;
 	private int precioMatricula;
 	private HashSet<Alumno> alumnosMatriculados;
 	private HashSet<Alumno> alumnosAptos;
 	private int numMatricludaos;
 	
-	public Curso(String titulo, Date inicio, Date finalizacion, int numDias, int preciMatricula) {
+	public Curso(String titulo, LocalDate inicio, LocalDate finalizacion, int numDias, int preciMatricula) {
 		this.titulo = titulo;
 		this.inicico = inicio;
 		this.finalizacion = finalizacion;
@@ -31,11 +31,11 @@ public abstract class Curso implements Cloneable{
 		return titulo;
 	}
 
-	public Date getInicico() {
+	public LocalDate getInicico() {
 		return inicico;
 	}
 
-	public Date getFinalizacion() {
+	public LocalDate getFinalizacion() {
 		return finalizacion;
 	}
 
@@ -47,12 +47,18 @@ public abstract class Curso implements Cloneable{
 		return precioMatricula;
 	}
 
-	public HashSet<Alumno> getAlumnosMatriculados() {
-		return alumnosMatriculados;
+	public Set<Alumno> getAlumnosMatriculados() {
+		//Forma 1 - Hacer una copia con clone
+		HashSet<Alumno> copia = (HashSet<Alumno>) alumnosMatriculados.clone();
+		return copia;
+		//alternativa la coleccion no modificable ->  return Collections.unmodifiableList(pujas);
 	}
 
-	public HashSet<Alumno> getAlumnosAptos() {
-		return alumnosAptos;
+	public Set<Alumno> getAlumnosAptos() {
+		//Forma 2 - Hacer una copia constructor
+		HashSet<Alumno> copia = new HashSet<Alumno>(this.alumnosAptos);
+		return copia;
+		//alternativa la coleccion no modificable ->  return Collections.unmodifiableList(pujas);
 	}
 
 	public int getNumMatricludaos() {
@@ -61,7 +67,7 @@ public abstract class Curso implements Cloneable{
 	
 	// Funciones
 	public boolean Haterminado() {
-		Date actual = new Date();
+		LocalDate actual = LocalDate.now();
 		if(actual.compareTo(finalizacion) > 0) {
 			return true;
 		}

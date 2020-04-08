@@ -1,6 +1,6 @@
 package cursos;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -11,7 +11,7 @@ public class CursoPresencial extends Curso {
     private int plazas;
 
     //Constructor
-    public CursoPresencial(String titulo, Date inicio, Date finalizacion, int numDias, int preciMatricula, int cupo, int asistenciaMin){
+    public CursoPresencial(String titulo, LocalDate inicio, LocalDate finalizacion, int numDias, int preciMatricula, int cupo, int asistenciaMin){
         super(titulo, inicio, finalizacion, numDias, preciMatricula);
         this.cupo = cupo;
         this.asistenciaMin = asistenciaMin;
@@ -57,7 +57,7 @@ public class CursoPresencial extends Curso {
         return this.numeroAsistencias(a) >= asistenciaMin;
     }
 
-    @Override
+   @Override
     protected Object clone() throws CloneNotSupportedException {
         return (CursoPresencial) super.clone();
     }
