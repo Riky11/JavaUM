@@ -2,8 +2,7 @@ package cursos;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -73,15 +72,12 @@ public class Programa {
 
         //Muestra los alumnos matriculados en el curso presencial ordenados utilizando
         //el criterio de ordenación implementado.
-        List<Alumno> lista =  new ArrayList<Alumno>();
-        lista.addAll(designBD.getAlumnosMatriculados());
-        Collections.sort(lista, new CriterioOrdenacionAlumnosPorDni());
-
+        Comparator<Alumno> criterio = new CriterioOrdenacionAlumnosPorDni();
+        List<Alumno> listaOrdenada = designBD.getALumnosMatriculadosOrdenados(criterio);
         System.out.println("\n**Alumnos matriculados curso presencial ordenados por dni:");
-        for (Alumno a : lista) {
+        for (Alumno a :listaOrdenada ) {
             System.out.println("    - " + a.toString());
         }
-
 
     }
 }
