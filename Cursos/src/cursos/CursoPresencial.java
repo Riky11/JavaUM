@@ -22,11 +22,12 @@ public class CursoPresencial extends Curso {
      * @param inicio fecha de inicio del curso
      * @param finalizacion fecha de finalizacion del curso
      * @param numDias numero de dias que dura el curso
+     * @param precioMatricula precio de la matricula del curso
      * @param cupo cupo de alumnos que se pueden matricular en el curso
      * @param asistenciaMin asistencia minimas establecidas en el curso para superarlo
      */
-    public CursoPresencial(String titulo, LocalDate inicio, LocalDate finalizacion, int numDias, int preciMatricula, int cupo, int asistenciaMin){
-        super(titulo, inicio, finalizacion, numDias, preciMatricula);
+    public CursoPresencial(String titulo, LocalDate inicio, LocalDate finalizacion, int numDias, int precioMatricula, int cupo, int asistenciaMin){
+        super(titulo, inicio, finalizacion, numDias, precioMatricula);
         this.cupo = cupo;
         this.asistenciaMin = asistenciaMin;
         this.asistencias = new HashMap<Integer, HashSet<Alumno>>();

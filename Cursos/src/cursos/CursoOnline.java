@@ -39,7 +39,7 @@ public class CursoOnline extends Curso {
 
     /**
      * Metodo de consulta del nivel maximo del curso
-     * @return
+     * @return devuelve el valor del nivel maximo del curso
      */
     public int getNivelMax() {
         return nivelMax;
